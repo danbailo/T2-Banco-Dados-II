@@ -16,16 +16,15 @@ import java.util.Scanner;
 public class Menu {
     Menu(MySQL database, Connection con, String serverName, String mydatabase,
             String username, String password) throws SQLException{
-        Scanner input = new Scanner(System.in);  
         database.create_tables(con);
-        Menu.options(database, con, serverName, mydatabase, username, password);       
+        options(database, con, serverName, mydatabase, username, password);       
     }
     
-    static void options(MySQL database,Connection con, String serverName, String mydatabase,
+    void options(MySQL database,Connection con, String serverName, String mydatabase,
             String username, String password) throws SQLException{
         Scanner input = new Scanner(System.in);        
         while(true){
-            System.out.println("Escolha a opção desejada");
+            System.out.println("\n\nEscolha a opção desejada");
             System.out.println("(1) Inserir Dados");
             System.out.println("(2) Realizar Consultas");
             System.out.println("(3) Deletar Tabelas");
@@ -42,10 +41,10 @@ public class Menu {
                             database.insert_vend(con, Insert.insert_vendedor());
                             break;
                         case 2:
-                            database.insert_end(con, Insert.insert_endereco());                            
+                            database.insert_tel(con, Insert.insert_telefone());                            
                             break;
                         case 3:
-                            database.insert_tel(con, Insert.insert_telefone());
+                            database.insert_end(con, Insert.insert_endereco());
                             break;
                         default:
                             break;
@@ -91,7 +90,7 @@ public class Menu {
                             database.insert_end(con, new Endereco(0,"RUA Z","CRUZEIRO","B. HORIZONTE","MG","2"));
                             database.insert_end(con, new Endereco(0,"RUA X","FLAMENGO","RIO DE JANEIRO","RJ","7"));
                             database.insert_end(con, new Endereco(0,"RUA Z","CRUZEIRO","B. HORIZONTE","MG","5"));
-                            database.insert_end(con, new Endereco(0,"RUA X","CENTRO","JOSE BONIFACIO","MS","6"));
+                            database.insert_end(con, new Endereco(0,"RUA X","CENTRO","JOSE BONIFACIO","SP","6"));
                             database.insert_end(con, new Endereco(0,"RUA X","CENTRO","JOSE BONIFACIO","SP","10"));
                             database.insert_end(con, new Endereco(0,"RUA X","CENTRO","B. HORIZONTE","MG","9"));
                             break;
@@ -118,8 +117,11 @@ public class Menu {
                     }                    
                     break;
                 case 5:
-                    database.query(con, "VENDEDOR", "SELECT * FROM VENDEDOR");
-                    database.query(con, "VENDEDOR", "SELECT IDVENDEDOR, NOME, SEXO, EMAIL, CPF, JANEIRO, FEVEREIRO, MARCO FROM VENDEDOR");
+                    System.out.println("\nConsulta 1: Todos os vendedores.");database.query(con, "VENDEDOR", "SELECT * FROM VENDEDOR");                    
+                    System.out.println("\nConsulta 2: Endereço dos vendedores.");database.query(con, "ENDERECO", "SELECT * FROM ENDERECO");                    
+                    System.out.println("\nConsulta 3: Telefone dos vendedores.");database.query(con, "TELEFONE", "SELECT * FROM TELEFONE");                    
+                    System.out.println("\nConsulta 4: Mostra apenas os telefones que são celulares.");database.query(con, "TELEFONE", "SELECT * FROM TELEFONE WHERE TIPO = 'CEL'");
+                    System.out.println("\nConsulta 5: Mostra o endereço dos vendedores que moram numa cidade que tem 'Bonifacio' como ultimo nome.");database.query(con, "ENDERECO", "SELECT * FROM ENDERECO WHERE CIDADE LIKE '%BONIFACIO'");
                     break;
                 case 6:
                     input.close();

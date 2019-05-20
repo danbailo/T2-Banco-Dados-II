@@ -177,40 +177,29 @@ public class MySQL {
         
         try{   
             ResultSet rs = stmt.executeQuery();
+            if(rs.next() == false){System.out.printf("A tabela %s ainda está vazia!\n",table);}
             if(table.equals("VENDEDOR")){
                 while (rs.next()){
-                    long idvendedor = rs.getLong("IDVENDEDOR");
-                    String nome = rs.getString("NOME");
-                    String sexo = rs.getString("SEXO");
-                    String email = rs.getString("EMAIL");
-                    String cpf = rs.getString("CPF");
-                    String janeiro = rs.getString("JANEIRO");  
-                    String fevereiro = rs.getString("FEVEREIRO");
-                    String marco = rs.getString("MARCO");   
                     System.out.println(
-                        "ID: "+idvendedor+"\n"
-                        + "Nome: "+nome+"\n"
-                        +"Sexo: "+sexo+"\n"
-                        +"Email: " +email+"\n"
-                        +"CPF: "+cpf+"\n"
-                        +"Janeiro: "+janeiro+"\n"
-                        +"Fevereiro: "+fevereiro+"\n"
-                        +"Março: "+marco);
+                        "ID: "+rs.getLong("IDVENDEDOR")+"\n"
+                        + "Nome: "+rs.getString("NOME")+"\n"
+                        +"Sexo: "+rs.getString("SEXO")+"\n"
+                        +"Email: " +rs.getString("EMAIL")+"\n"
+                        +"CPF: "+rs.getString("CPF")+"\n"
+                        +"Janeiro: "+rs.getString("JANEIRO")+"\n"
+                        +"Fevereiro: "+rs.getString("FEVEREIRO")+"\n"
+                        +"Março: "+rs.getString("MARCO"));
                     System.out.println();
                 }
 
             }
             else if(table.equals("TELEFONE")){
                 while (rs.next()){
-                    long idtelefone = rs.getLong("IDTELEFONE");
-                    String tipo = rs.getString("TIPO");
-                    String numero = rs.getString("NUMERO");
-                    String id_vendedor = rs.getString("ID_VENDEDOR");  
                     System.out.println(
-                        "ID: "+idtelefone+"\n"
-                        + "Tipo: "+tipo+"\n"
-                        +"Número: "+numero+"\n"
-                        +"ID do Vendedor: " +id_vendedor);
+                        "ID: "+rs.getLong("IDTELEFONE")+"\n"
+                        + "Tipo: "+rs.getString("TIPO")+"\n"
+                        +"Número: "+rs.getString("NUMERO")+"\n"
+                        +"ID do Vendedor: " +rs.getString("ID_VENDEDOR"));
                     System.out.println();
                 }             
             }

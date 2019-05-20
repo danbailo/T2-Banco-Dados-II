@@ -9,6 +9,11 @@ public class Main {
 
     public static void main(String[] args) throws SQLException {
         MySQL database = new MySQL();
+        
+//        String serverName = "remotemysql.com";
+//        String mydatabase = "vsOSJjA3bF";
+//        String username = "vsOSJjA3bF";
+//        String password = "Z4qGUTiTxK";
 
         String serverName = "localhost";
         String mydatabase = "T2_BDII";

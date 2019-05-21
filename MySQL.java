@@ -177,7 +177,7 @@ public class MySQL {
         
         try{   
             ResultSet rs = stmt.executeQuery();
-            if(rs.next() == false){System.out.printf("A tabela %s ainda está vazia!\n",table);}
+            if(!rs.next()){System.out.printf("A tabela %s ainda está vazia!\n",table); return;}
             if(table.equals("VENDEDOR")){
                 while (rs.next()){
                     System.out.println(

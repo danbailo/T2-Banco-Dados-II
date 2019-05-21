@@ -13,7 +13,7 @@ import java.util.Scanner;
  *
  * @author daniel
  */
-public class Menu {
+public final class Menu {
     Menu(MySQL database, Connection con, String serverName, String mydatabase,
             String username, String password) throws SQLException{
         database.create_tables(con);
@@ -83,16 +83,16 @@ public class Menu {
                             database.insert_vend(con, new Vendedor(0, "CLARA","F","CLARA@IG.COM","99754-7","676545.78","77544.87","578665.90"));
                             break;
                         case 2:
-                            database.insert_end(con, new Endereco(0,"RUA A","CENTRO","B. HORIZONTE","MG","4"));
+                            database.insert_end(con, new Endereco(0,"RUA A","CENTRO","BELO HORIZONTE","MG","4"));
                             database.insert_end(con, new Endereco(0,"RUA B","CENTRO","RIO DE JANEIRO","RJ","1"));
-                            database.insert_end(con, new Endereco(0,"RUA C","JARDINS","SAO PAULO","SP","3"));
+                            database.insert_end(con, new Endereco(0,"RUA C","JARDINS","SAO BONIFACIO","ES","3"));
                             database.insert_end(con, new Endereco(0,"RUA B","ESTACIO","RIO DE JANEIRO","RJ","8"));
-                            database.insert_end(con, new Endereco(0,"RUA Z","CRUZEIRO","B. HORIZONTE","MG","2"));
+                            database.insert_end(con, new Endereco(0,"RUA Z","CRUZEIRO","BELO HORIZONTE","MG","2"));
                             database.insert_end(con, new Endereco(0,"RUA X","FLAMENGO","RIO DE JANEIRO","RJ","7"));
-                            database.insert_end(con, new Endereco(0,"RUA Z","CRUZEIRO","B. HORIZONTE","MG","5"));
+                            database.insert_end(con, new Endereco(0,"RUA Z","CRUZEIRO","BELO HORIZONTE","MG","5"));
                             database.insert_end(con, new Endereco(0,"RUA X","CENTRO","JOSE BONIFACIO","SP","6"));
                             database.insert_end(con, new Endereco(0,"RUA X","CENTRO","JOSE BONIFACIO","SP","10"));
-                            database.insert_end(con, new Endereco(0,"RUA X","CENTRO","B. HORIZONTE","MG","9"));
+                            database.insert_end(con, new Endereco(0,"RUA H","CENTRO","RIO BONIFACIO","MG","9"));
                             break;
                         case 3:
                             database.insert_tel(con, new Telefone(0, "CEL","9955331","1"));

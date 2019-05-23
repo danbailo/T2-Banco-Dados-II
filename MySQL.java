@@ -19,7 +19,7 @@ public class MySQL {
             Class.forName(driverName);
             String url = "jdbc:mysql://" + serverName + ":3306/" + mydatabase;
             connection = DriverManager.getConnection(url, username, password); 
-            status = (connection != null) ? "Conectado com sucesso!" : "Não foi possivel realizar conexão!";
+            status = (connection != null) ? "Conectado ao Banco de Dados com sucesso!" : "Não foi possivel realizar conexão!";
             System.out.println(status);
         }
         catch (ClassNotFoundException err){
@@ -80,12 +80,14 @@ public class MySQL {
         }
     }
     
-    public void delete_table(Connection con, String table){
+    public void delete_table(Connection con){
         Statement stnt;
         try{
             stnt = (Statement) con.createStatement();
-            stnt.execute("DROP TABLE "+table);
-            System.out.println("Tabela deletada com sucesso!\n");
+            stnt.execute("DROP TABLE IF EXISTS ENDERECO");            
+            stnt.execute("DROP TABLE IF EXISTS TELEFONE");
+            stnt.execute("DROP TABLE IF EXISTS VENDEDOR");
+            System.out.println("Tabelas deletadas com sucesso!\n");
             stnt.close();
         }
         catch(SQLException err){

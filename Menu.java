@@ -27,12 +27,13 @@ public final class Menu {
             System.out.println("\n\nEscolha a opção desejada");
             System.out.println("(1) Inserir Dados");
             System.out.println("(2) Realizar Consultas");
-            System.out.println("(3) Deletar Tabelas");
+            System.out.println("(3) Criar Tabelas");
+            System.out.println("(4) Deletar Tabelas");
             System.out.println("----------------------------------------");
-            System.out.println("(4) Inserir Dados Automaticamente");
-            System.out.println("(5) Realizar Consultas Automaticamente");
+            System.out.println("(5) Inserir Dados Automaticamente");
+            System.out.println("(6) Realizar Consultas Automaticamente");
             System.out.println("----------------------------------------");            
-            System.out.println("(6) Sair");
+            System.out.println("(7) Sair");
             switch (input.nextInt()) {
                 case 1:
                     input.nextLine();
@@ -62,12 +63,12 @@ public final class Menu {
                     database.query(con, table, query);
                     break;
                 case 3:
-                    input.nextLine();
-                    database.show_tables(con);
-                    System.out.println("Entre com a tabela que você deseja deletar");
-                    database.delete_table(con, input.nextLine());
+                    database.create_tables(con);
                     break;
-                case 4:         
+                case 4:
+                    database.delete_table(con);
+                    break;                    
+                case 5:         
                     input.nextLine();
                     switch (Insert.insert_into()) {
                         case 1:
@@ -116,14 +117,14 @@ public final class Menu {
                             break;
                     }                    
                     break;
-                case 5:
+                case 6:
                     System.out.println("\nConsulta 1: Todos os vendedores.");database.query(con, "VENDEDOR", "SELECT * FROM VENDEDOR");                    
                     System.out.println("\nConsulta 2: Endereço dos vendedores.");database.query(con, "ENDERECO", "SELECT * FROM ENDERECO");                    
                     System.out.println("\nConsulta 3: Telefone dos vendedores.");database.query(con, "TELEFONE", "SELECT * FROM TELEFONE");                    
                     System.out.println("\nConsulta 4: Mostra apenas os telefones que são celulares.");database.query(con, "TELEFONE", "SELECT * FROM TELEFONE WHERE TIPO = 'CEL'");
                     System.out.println("\nConsulta 5: Mostra o endereço dos vendedores que moram numa cidade que tem 'Bonifacio' como ultimo nome.");database.query(con, "ENDERECO", "SELECT * FROM ENDERECO WHERE CIDADE LIKE '%BONIFACIO'");
                     break;
-                case 6:
+                case 7:
                     input.close();
                     database.close_connection(con);
                     System.exit(0);

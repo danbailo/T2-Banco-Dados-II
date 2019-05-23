@@ -4,9 +4,9 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.lang.*;
 
-public class Main {
+public class Main{
 
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException{
         MySQL database = new MySQL();
 
         String serverName = "localhost";
@@ -16,6 +16,5 @@ public class Main {
 
         Connection con = database.connect(serverName, mydatabase, username, password);
         new Menu(database, con, serverName, mydatabase, username, password);
-
     }
 }

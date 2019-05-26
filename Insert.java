@@ -29,7 +29,7 @@ public class Insert {
         Vendedor vend = new Vendedor();
         System.out.println("Entre com os seguintes dados");
         System.out.print("Nome: ");vend.setNome(input.nextLine());
-        System.out.print("Sexo (M ou F): ");vend.setSexo(input.nextLine());
+        System.out.print("Sexo (M ou F): ");vend.setSexo(input.nextLine().toUpperCase());
         System.out.print("Email: ");vend.setEmail(input.nextLine());
         System.out.print("CPF: ");vend.setCpf(input.nextLine());
         System.out.print("Janeiro: ");vend.setJaneiro(Double.parseDouble(input.nextLine()));

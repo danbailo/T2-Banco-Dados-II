@@ -56,9 +56,9 @@ public final class Menu {
                     input.nextLine();
                     database.show_tables(con);
                     System.out.println("Digite a tabela na qual você que deseja realizar uma consulta:");
-                    String table = input.nextLine();
+                    String table = input.nextLine().toUpperCase();
                     System.out.print("Entre com a consulta: ");
-                    String query = input.nextLine();
+                    String query = input.nextLine().toUpperCase();
                     System.out.println();
                     database.query(con, table, query);
                     break;

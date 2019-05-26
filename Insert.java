@@ -20,7 +20,13 @@ public class Insert {
         System.out.println("    (1) VENDEDOR");
         System.out.println("    (2) TELEFONE");
         System.out.println("    (3) ENDERECO");
-        return input.nextInt();
+        try{
+            return input.nextInt();            
+        }
+        catch(Exception err){
+            System.out.println("Por favor, entre com 1,2 ou 3!");
+        }
+        return -1;
     }
     
     public static Vendedor insert_vendedor(){
@@ -44,7 +50,7 @@ public class Insert {
         Scanner input = new Scanner(System.in);
         Telefone tel = new Telefone();
         System.out.println("Entre com os seguintes dados");                
-        System.out.print("Tipo ('COM','RES','CEL'): ");tel.setTipo(input.nextLine());
+        System.out.print("Tipo ('COM','RES','CEL'): ");tel.setTipo(input.nextLine().toUpperCase());
         System.out.print("Número (máx. 10 caracteres): ");tel.setNumero(input.nextLine());
         System.out.print("ID do Vendedor: ");tel.setId_vendedor(input.nextLine());
         System.out.println();
@@ -59,7 +65,7 @@ public class Insert {
         System.out.print("Rua: ");end.setRua(input.nextLine());
         System.out.print("Bairro: ");end.setBairro(input.nextLine());
         System.out.print("Cidade: ");end.setCidade(input.nextLine());
-        System.out.print("Estado: ");end.setEstado(input.nextLine());
+        System.out.print("Estado (máx. 2 caracteres): ");end.setEstado(input.nextLine().toUpperCase());
         System.out.print("ID do Vendedor: ");end.setId_vendedor(input.nextLine());
         System.out.println();
         return end;

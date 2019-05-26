@@ -3,6 +3,10 @@
 Após conectar no banco de dados, primeiro você deve inserir os dados na tabela VENDEDOR, pois essa é a tabela
 mais forte do banco e as tabelas TELEFONE e ENDERECO dependem desta visto que elas possuem chave estrangeira da tabela VENDEDOR.
 
+Ao selecionar a opção de **Inserir Dados Automaticamente**, serão inseridas *10 tuplas*.
+
+Ao selecionar a opção de **Realizar Consultas Automaticamente**, serão realizadas *5 consultas*.
+
 ## Licença
 
     The MIT License (MIT)

@@ -1,5 +1,8 @@
 # Trabalho 2 de Banco de Dados II
 
+Após conectar no banco de dados, primeiro você deve inserir os dados na tabela VENDEDOR, pois essa é a tabela
+mais forte do banco e as tabelas TELEFONE e ENDERECO dependem desta visto que elas possuem chave estrangeira da tabela VENDEDOR.
+
 ## Licença
 
     The MIT License (MIT)

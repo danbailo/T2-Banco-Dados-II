@@ -1,6 +1,8 @@
 # Trabalho 2 de Banco de Dados II
 
-Após conectar no banco de dados, primeiro você deve inserir os dados na tabela VENDEDOR, pois essa é a tabela
+Após se conectar ao banco de dados, 3 tabelas serão criadas automaticamente. As tabelas são *VENDEDOR, TELEFONE* e *ENDERECO*.
+
+Para realizar a inserção de dados, primeiro você deve inserir os dados na tabela VENDEDOR, pois essa é a tabela
 mais forte do banco e as tabelas TELEFONE e ENDERECO dependem desta visto que elas possuem chave estrangeira da tabela VENDEDOR.
 
 Ao selecionar a opção de **Inserir Dados Automaticamente**, serão inseridas *10 tuplas*.

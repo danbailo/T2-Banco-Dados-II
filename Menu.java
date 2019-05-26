@@ -84,18 +84,6 @@ public final class Menu {
                             database.insert_vend(con, new Vendedor(null, "CLARA","F","CLARA@IG.COM","99754-7",676545.78,77544.87,578665.90));
                             break;
                         case 2:
-                            database.insert_end(con, new Endereco(null,"RUA A","CENTRO","BELO HORIZONTE","MG","4"));
-                            database.insert_end(con, new Endereco(null,"RUA B","CENTRO","RIO DE JANEIRO","RJ","1"));
-                            database.insert_end(con, new Endereco(null,"RUA C","JARDINS","SAO BONIFACIO","ES","3"));
-                            database.insert_end(con, new Endereco(null,"RUA B","ESTACIO","RIO DE JANEIRO","RJ","8"));
-                            database.insert_end(con, new Endereco(null,"RUA Z","CRUZEIRO","BELO HORIZONTE","MG","2"));
-                            database.insert_end(con, new Endereco(null,"RUA X","FLAMENGO","RIO DE JANEIRO","RJ","7"));
-                            database.insert_end(con, new Endereco(null,"RUA Z","CRUZEIRO","BELO HORIZONTE","MG","5"));
-                            database.insert_end(con, new Endereco(null,"RUA X","CENTRO","JOSE BONIFACIO","SP","6"));
-                            database.insert_end(con, new Endereco(null,"RUA X","CENTRO","JOSE BONIFACIO","SP","10"));
-                            database.insert_end(con, new Endereco(null,"RUA H","CENTRO","RIO BONIFACIO","MG","9"));
-                            break;
-                        case 3:
                             database.insert_tel(con, new Telefone(null, "CEL","9955331","1"));
                             database.insert_tel(con, new Telefone(null, "COM","6574565","3"));
                             database.insert_tel(con, new Telefone(null, "CEL","8864566","2"));
@@ -113,6 +101,18 @@ public final class Menu {
                             database.insert_tel(con, new Telefone(null, "RES","2987512","8"));
                             database.insert_tel(con, new Telefone(null, "COM","1574565","3"));
                             break;
+                        case 3:
+                            database.insert_end(con, new Endereco(null,"RUA A","CENTRO","BELO HORIZONTE","MG","4"));
+                            database.insert_end(con, new Endereco(null,"RUA B","CENTRO","RIO DE JANEIRO","RJ","1"));
+                            database.insert_end(con, new Endereco(null,"RUA C","JARDINS","SAO BONIFACIO","ES","3"));
+                            database.insert_end(con, new Endereco(null,"RUA B","ESTACIO","RIO DE JANEIRO","RJ","8"));
+                            database.insert_end(con, new Endereco(null,"RUA Z","CRUZEIRO","BELO HORIZONTE","MG","2"));
+                            database.insert_end(con, new Endereco(null,"RUA X","FLAMENGO","RIO DE JANEIRO","RJ","7"));
+                            database.insert_end(con, new Endereco(null,"RUA Z","CRUZEIRO","BELO HORIZONTE","MG","5"));
+                            database.insert_end(con, new Endereco(null,"RUA X","CENTRO","JOSE BONIFACIO","SP","6"));
+                            database.insert_end(con, new Endereco(null,"RUA X","CENTRO","JOSE BONIFACIO","SP","10"));
+                            database.insert_end(con, new Endereco(null,"RUA H","CENTRO","RIO BONIFACIO","MG","9"));
+                            break;                            
                         default:
                             break;
                     }                    

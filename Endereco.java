@@ -10,7 +10,7 @@ package T2_BDII;
  * @author daniel
  */
 public class Endereco {
-    private long idendereco;
+    private String idendereco;
     private String rua;
     private String bairro;
     private String cidade;
@@ -21,7 +21,7 @@ public class Endereco {
         
     }
 
-    public Endereco(long idendereco, String rua, String bairro, String cidade, String estado, String id_vendedor){
+    public Endereco(String idendereco, String rua, String bairro, String cidade, String estado, String id_vendedor){
         this.idendereco = idendereco;
         this.rua = rua;
         this.bairro = bairro;
@@ -30,11 +30,11 @@ public class Endereco {
         this.id_vendedor = id_vendedor;
     }
     
-    public long getIdendereco() {
+    public String getIdendereco() {
         return idendereco;
     }
 
-    public void setIdendereco(long idendereco) {
+    public void setIdendereco(String idendereco) {
         this.idendereco = idendereco;
     }
 

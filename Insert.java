@@ -32,9 +32,9 @@ public class Insert {
         System.out.print("Sexo (M ou F): ");vend.setSexo(input.nextLine());
         System.out.print("Email: ");vend.setEmail(input.nextLine());
         System.out.print("CPF: ");vend.setCpf(input.nextLine());
-        System.out.print("Janeiro: ");vend.setJaneiro(input.nextLine());
-        System.out.print("Fevereiro: ");vend.setFevereiro(input.nextLine());
-        System.out.print("Março: ");vend.setMarco(input.nextLine());       
+        System.out.print("Janeiro: ");vend.setJaneiro(Double.parseDouble(input.nextLine()));
+        System.out.print("Fevereiro: ");vend.setFevereiro(Double.parseDouble(input.nextLine()));
+        System.out.print("Março: ");vend.setMarco(Double.parseDouble(input.nextLine()));       
         System.out.println();
         return vend;
     }

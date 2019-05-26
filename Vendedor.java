@@ -1,14 +1,14 @@
 package T2_BDII;
 
 public class Vendedor {
-    private long idvendedor;
+    private String idvendedor;
     private String nome;
     private String sexo;
     private String email;
     private String cpf;
-    private String janeiro;
-    private String fevereiro;
-    private String marco;
+    private Double janeiro;
+    private Double fevereiro;
+    private Double marco;
     
     public Vendedor(){
         
@@ -19,8 +19,8 @@ public class Vendedor {
 //                this(null, nome, sexo, email, cpf, janeiro, fevereiro, marco);
 //    }    
     
-    public Vendedor(long idvendedor, String nome, String sexo, String email, String cpf,
-            String janeiro, String fevereiro, String marco){
+    public Vendedor(String idvendedor, String nome, String sexo, String email, String cpf,
+            Double janeiro, Double fevereiro, Double marco){
         this.idvendedor = idvendedor;
         this.nome = nome;
         this.sexo = sexo;
@@ -31,11 +31,11 @@ public class Vendedor {
         this.marco = marco;
     }
 
-    public long getId() {
+    public String getId() {
         return idvendedor;
     }
 
-    public void setId(long idvendedor) {
+    public void setId(String idvendedor) {
         this.idvendedor = idvendedor;
     }
 
@@ -71,27 +71,27 @@ public class Vendedor {
         this.cpf = cpf;
     }
 
-    public String getJaneiro() {
+    public Double getJaneiro() {
         return janeiro;
     }
 
-    public void setJaneiro(String janeiro) {
+    public void setJaneiro(Double janeiro) {
         this.janeiro = janeiro;
     }
 
-    public String getFevereiro() {
+    public Double getFevereiro() {
         return fevereiro;
     }
 
-    public void setFevereiro(String fevereiro) {
+    public void setFevereiro(Double fevereiro) {
         this.fevereiro = fevereiro;
     }
 
-    public String getMarco() {
+    public Double getMarco() {
         return marco;
     }
 
-    public void setMarco(String marco) {
+    public void setMarco(Double marco) {
         this.marco = marco;
     }
 }

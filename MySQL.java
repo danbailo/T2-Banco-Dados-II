@@ -107,9 +107,9 @@ public class MySQL {
         stmt.setString(2, vend.getSexo());
         stmt.setString(3, vend.getEmail());
         stmt.setString(4, vend.getCpf());
-        stmt.setString(5, vend.getJaneiro());
-        stmt.setString(6, vend.getFevereiro());     
-        stmt.setString(7, vend.getMarco());  
+        stmt.setDouble(5, vend.getJaneiro());
+        stmt.setDouble(6, vend.getFevereiro());     
+        stmt.setDouble(7, vend.getMarco());  
         
         try{
             stmt.execute();
@@ -129,7 +129,6 @@ public class MySQL {
                 + " values(?,?,?)";
         PreparedStatement stmt = con.prepareStatement(sql);
     
-        // stmt.setString(1, String.valueOf(tel.getIdtelefone()));
         stmt.setString(1, tel.getTipo());
         stmt.setString(2, tel.getNumero());
         stmt.setString(3, tel.getId_vendedor());
@@ -152,7 +151,6 @@ public class MySQL {
                 + " values(?,?,?,?,?)";
         PreparedStatement stmt = con.prepareStatement(sql);
     
-        // stmt.setString(1, String.valueOf(end.getIdendereco()));
         stmt.setString(1, end.getRua());
         stmt.setString(2, end.getBairro());
         stmt.setString(3, end.getCidade());
@@ -180,25 +178,25 @@ public class MySQL {
         try{   
             ResultSet rs = stmt.executeQuery();
             if(!rs.next()){System.out.printf("A tabela %s ainda está vazia!\n",table); return;}
+            rs.beforeFirst();
             if(table.equals("VENDEDOR")){
                 while (rs.next()){
                     System.out.println(
-                        "ID: "+rs.getLong("IDVENDEDOR")+"\n"
+                        "ID: "+rs.getString("IDVENDEDOR")+"\n"
                         + "Nome: "+rs.getString("NOME")+"\n"
                         +"Sexo: "+rs.getString("SEXO")+"\n"
                         +"Email: " +rs.getString("EMAIL")+"\n"
                         +"CPF: "+rs.getString("CPF")+"\n"
-                        +"Janeiro: "+rs.getString("JANEIRO")+"\n"
-                        +"Fevereiro: "+rs.getString("FEVEREIRO")+"\n"
-                        +"Março: "+rs.getString("MARCO"));
+                        +"Janeiro: "+rs.getDouble("JANEIRO")+"\n"
+                        +"Fevereiro: "+rs.getDouble("FEVEREIRO")+"\n"
+                        +"Março: "+rs.getDouble("MARCO"));
                     System.out.println();
                 }
-
             }
             else if(table.equals("TELEFONE")){
                 while (rs.next()){
                     System.out.println(
-                        "ID: "+rs.getLong("IDTELEFONE")+"\n"
+                        "ID: "+rs.getString("IDTELEFONE")+"\n"
                         + "Tipo: "+rs.getString("TIPO")+"\n"
                         +"Número: "+rs.getString("NUMERO")+"\n"
                         +"ID do Vendedor: " +rs.getString("ID_VENDEDOR"));
@@ -207,22 +205,16 @@ public class MySQL {
             }
             else if(table.equals("ENDERECO")){
                 while (rs.next()){
-                    long idendereco = rs.getLong("IDENDERECO");
-                    String rua = rs.getString("RUA");
-                    String bairro = rs.getString("BAIRRO");
-                    String cidade = rs.getString("CIDADE");
-                    String estado = rs.getString("ESTADO");
-                    String id_vendedor = rs.getString("ID_VENDEDOR");  
                     System.out.println(
-                        "ID: "+idendereco+"\n"
-                        + "Rua: "+rua+"\n"
-                        +"Bairro: "+bairro+"\n"
-                        + "Cidade: "+cidade+"\n"
-                        + "Estado: "+estado+"\n"        
-                        +"ID do Vendedor: " +id_vendedor);
+                        "ID: "+rs.getString("IDENDERECO")+"\n"
+                        + "Rua: "+rs.getString("RUA")+"\n"
+                        +"Bairro: "+rs.getString("BAIRRO")+"\n"
+                        + "Cidade: "+rs.getString("CIDADE")+"\n"
+                        + "Estado: "+rs.getString("ESTADO")+"\n"        
+                        +"ID do Vendedor: " +rs.getString("ID_VENDEDOR"));
                     System.out.println();
                 }            
-            }        
+            }
         }
         catch(SQLException err){
             System.out.println("Por favor, selecione a mesma tabela dita anteriormente!");

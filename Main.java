@@ -2,7 +2,6 @@ package T2_BDII;
 
 import java.sql.SQLException;
 import java.sql.Connection;
-import java.lang.*;
 
 public class Main{
 

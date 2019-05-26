@@ -7,8 +7,8 @@ public class Main{
 
     public static void main(String[] args) throws SQLException{
         MySQL database = new MySQL();
-
-        String serverName = "localhost"; // Conexão
+        
+        String serverName = "localhost"; // Servidor
         String mydatabase = "T2_BDII"; // Nome do banco de dados
         String username = "daniel"; // Nome do usuário do banco
         String password = "123456789"; // Senha do usuário

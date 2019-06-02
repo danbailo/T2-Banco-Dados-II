@@ -71,7 +71,7 @@ public class MySQL {
             "	FOREIGN KEY(ID_VENDEDOR) REFERENCES VENDEDOR(IDVENDEDOR)\n" +
             ")");     
         
-            System.out.println("Tabelas criadas com sucesso!\n");
+            System.out.println("Tabelas criadas com sucesso!");
             stnt.close();
         }
         catch(SQLException err){
@@ -80,14 +80,14 @@ public class MySQL {
         }
     }
     
-    public void delete_table(Connection con){
+    public void delete_tables(Connection con){
         Statement stnt;
         try{
             stnt = (Statement) con.createStatement();
             stnt.execute("DROP TABLE IF EXISTS ENDERECO");            
             stnt.execute("DROP TABLE IF EXISTS TELEFONE");
             stnt.execute("DROP TABLE IF EXISTS VENDEDOR");
-            System.out.println("Tabelas deletadas com sucesso!\n");
+//            System.out.println("Tabelas deletadas com sucesso!");
             stnt.close();
         }
         catch(SQLException err){
@@ -113,7 +113,7 @@ public class MySQL {
         
         try{
             stmt.execute();
-            System.out.println("Dados gravados com sucesso!\n");
+//            System.out.println("Dados gravados com sucesso!\n");
         }
         catch(SQLException err){
             System.out.println("Erro ao inserir os dados!");
@@ -131,11 +131,11 @@ public class MySQL {
     
         stmt.setString(1, tel.getTipo());
         stmt.setString(2, tel.getNumero());
-        stmt.setString(3, tel.getId_vendedor());
+        stmt.setLong(3, tel.getId_vendedor());
         
         try{
             stmt.execute();
-            System.out.println("Dados gravados com sucesso!\n");
+//            System.out.println("Dados gravados com sucesso!\n");
         }
         catch(SQLException err){
             System.out.println("Erro ao inserir dado!");
@@ -155,74 +155,242 @@ public class MySQL {
         stmt.setString(2, end.getBairro());
         stmt.setString(3, end.getCidade());
         stmt.setString(4, end.getEstado());
-        stmt.setString(5, end.getId_vendedor()); 
+        stmt.setLong(5, end.getId_vendedor()); 
         
         try{
             stmt.execute();
-            System.out.println("Dados gravados com sucesso!\n");
+//            System.out.println("Dados gravados com sucesso!\n");
         }
         catch(SQLException err){
             System.out.println("Erro ao inserir dado!");
             System.out.println(err.getMessage()+'\n');
         }
         stmt.close();
-    }    
-    
-    public void query(Connection con, String table, String query) throws SQLException{
-        PreparedStatement stmt = con.prepareStatement(query,Statement.RETURN_GENERATED_KEYS);
-        
-        if(!(table.equals("VENDEDOR") || table.equals("ENDERECO") || table.equals("TELEFONE"))){
-            System.out.println("Por favor, entre com uma tabela existente no banco!\n"); return;
-        }
-        
+    }        
+    public void query1(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM VENDEDOR");
         try{   
             ResultSet rs = stmt.executeQuery();
-            if(!rs.next()){System.out.printf("A tabela %s ainda está vazia!\n",table); return;}
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
             rs.beforeFirst();
-            if(table.equals("VENDEDOR")){
-                while (rs.next()){
-                    System.out.println(
-                        "ID: "+rs.getString("IDVENDEDOR")+"\n"
-                        + "Nome: "+rs.getString("NOME")+"\n"
-                        +"Sexo: "+rs.getString("SEXO")+"\n"
-                        +"Email: " +rs.getString("EMAIL")+"\n"
-                        +"CPF: "+rs.getString("CPF")+"\n"
-                        +"Janeiro: "+rs.getDouble("JANEIRO")+"\n"
-                        +"Fevereiro: "+rs.getDouble("FEVEREIRO")+"\n"
-                        +"Março: "+rs.getDouble("MARCO"));
-                    System.out.println();
-                }
-            }
-            else if(table.equals("TELEFONE")){
-                while (rs.next()){
-                    System.out.println(
-                        "ID: "+rs.getString("IDTELEFONE")+"\n"
-                        + "Tipo: "+rs.getString("TIPO")+"\n"
-                        +"Número: "+rs.getString("NUMERO")+"\n"
-                        +"ID do Vendedor: " +rs.getString("ID_VENDEDOR"));
-                    System.out.println();
-                }             
-            }
-            else if(table.equals("ENDERECO")){
-                while (rs.next()){
-                    System.out.println(
-                        "ID: "+rs.getString("IDENDERECO")+"\n"
-                        + "Rua: "+rs.getString("RUA")+"\n"
-                        +"Bairro: "+rs.getString("BAIRRO")+"\n"
-                        + "Cidade: "+rs.getString("CIDADE")+"\n"
-                        + "Estado: "+rs.getString("ESTADO")+"\n"        
-                        +"ID do Vendedor: " +rs.getString("ID_VENDEDOR"));
-                    System.out.println();
-                }            
+            while (rs.next()){
+                System.out.println(
+                    "ID: "+rs.getString("IDVENDEDOR")+"\n"
+                    + "Nome: "+rs.getString("NOME")+"\n"
+                    +"Sexo: "+rs.getString("SEXO")+"\n"
+                    +"Email: " +rs.getString("EMAIL")+"\n"
+                    +"CPF: "+rs.getString("CPF")+"\n"
+                    +"Janeiro: R$ "+rs.getDouble("JANEIRO")+"\n"
+                    +"Fevereiro: R$ "+rs.getDouble("FEVEREIRO")+"\n"
+                    +"Março: R$ "+rs.getDouble("MARCO"));
+                System.out.println();
             }
         }
         catch(SQLException err){
-            System.out.println("Por favor, selecione a mesma tabela dita anteriormente!");
             System.out.println(err.getMessage()+"\n");
         }
-        stmt.close();
+        stmt.close();            
+    }
+    
+    public void query2(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM TELEFONE");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "ID: "+rs.getString("IDTELEFONE")+"\n"
+                    + "Tipo: "+rs.getString("TIPO")+"\n"
+                    +"Número: "+rs.getString("NUMERO")+"\n"
+                    +"ID do Vendedor: " +rs.getString("ID_VENDEDOR"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }   
+    
+    public void query3(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM ENDERECO");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                          "ID: "+rs.getLong("IDENDERECO")+"\n"
+                        + "Rua: "+rs.getString("RUA")+"\n"
+                        + "Bairro: "+rs.getString("BAIRRO")+"\n"
+                        + "Cidade: "+rs.getString("CIDADE")+"\n"
+                        + "Estado: "+rs.getString("ESTADO")+"\n"        
+                        + "ID do Vendedor: " +rs.getLong("ID_VENDEDOR"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }     
+    
+    public void query4(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT NOME, JANEIRO, FEVEREIRO, MARCO, (JANEIRO+FEVEREIRO+MARCO) AS 'TOTAL', (JANEIRO+FEVEREIRO+MARCO)*0.25 AS 'DESCONTO', (JANEIRO+FEVEREIRO+MARCO)/3 AS 'MEDIA' FROM VENDEDOR");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "Nome: "+rs.getString("NOME")+"\n"
+                    + "Janeiro: R$ "+rs.getDouble("JANEIRO")+"\n"
+                    + "Fevereiro: R$ "+rs.getDouble("FEVEREIRO")+"\n"
+                    + "Março: R$ "+rs.getDouble("MARCO")+"\n"
+                    + "Total: R$ "+rs.getDouble("TOTAL")+"\n"  
+                    + "Desconto: R$ "+rs.getDouble("DESCONTO")+"\n"  
+                    + "Média: R$ "+rs.getDouble("MEDIA"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
     }
 
+    public void query5(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT * FROM VENDEDOR WHERE IDVENDEDOR = (SELECT ID_VENDEDOR FROM ENDERECO WHERE BAIRRO LIKE 'JARDINS')");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "Nome: "+rs.getString("NOME")+"\n"
+                    + "Sexo: "+rs.getString("SEXO"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }    
+
+    public void query6(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT DISTINCT * FROM VENDEDOR V INNER JOIN TELEFONE T ON V.IDVENDEDOR = T.ID_VENDEDOR INNER JOIN ENDERECO E ON V.IDVENDEDOR = E.ID_VENDEDOR WHERE V.IDVENDEDOR = 10");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                      "ID: "+rs.getString("V.IDVENDEDOR")+"\n"
+                    + "Nome: "+rs.getString("V.NOME")+"\n"
+                    + "Sexo: "+rs.getString("V.SEXO")+"\n"
+                    + "Email: " +rs.getString("V.EMAIL")+"\n"
+                    + "CPF: "+rs.getString("V.CPF")+"\n"
+                    + "Janeiro: R$ "+rs.getDouble("V.JANEIRO")+"\n"
+                    + "Fevereiro: R$ "+rs.getDouble("V.FEVEREIRO")+"\n"
+                    + "Março: R$ "+rs.getDouble("V.MARCO")+"\n"
+                    + "ID Telefone: "+rs.getString("T.IDTELEFONE")+"\n"
+                    + "Tipo: "+rs.getString("T.TIPO")+"\n"
+                    + "Número: "+rs.getString("T.NUMERO")+"\n"
+                    + "ID do Vendedor: " +rs.getString("T.ID_VENDEDOR")+"\n"
+                    + "ID Endereço: "+rs.getLong("E.IDENDERECO")+"\n"
+                    + "Rua: "+rs.getString("E.RUA")+"\n"
+                    + "Bairro: "+rs.getString("E.BAIRRO")+"\n"
+                    + "Cidade: "+rs.getString("E.CIDADE")+"\n"
+                    + "Estado: "+rs.getString("E.ESTADO")+"\n"        
+                    + "ID do Vendedor: " +rs.getLong("E.ID_VENDEDOR"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }  
+
+    public void query7(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT V.NOME, V.SEXO FROM VENDEDOR V INNER JOIN ENDERECO E ON V.IDVENDEDOR = E.ID_VENDEDOR WHERE V.SEXO = 'M' AND E.CIDADE LIKE '%BONIFACIO'");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "Nome: "+rs.getString("V.NOME")+"\n"
+                    + "Sexo: "+rs.getString("V.SEXO"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }          
+
+    public void query8(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT TIPO, NUMERO FROM TELEFONE WHERE TIPO LIKE 'CEL'  AND NUMERO LIKE '9%' OR NUMERO LIKE '%5'");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "Tipo: "+rs.getString("TIPO")+"\n"
+                    + "Número: "+rs.getString("NUMERO"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    } 
+
+    public void query9(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT NOME, FEVEREIRO FROM VENDEDOR WHERE FEVEREIRO < (SELECT AVG(FEVEREIRO) FROM VENDEDOR) AND SEXO ='F'");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "Nome: "+rs.getString("NOME")+"\n"
+                    + "Fevereiro: R$ "+rs.getDouble("FEVEREIRO"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }
+    
+
+    public void query10(Connection con) throws SQLException{
+        PreparedStatement stmt = con.prepareStatement("SELECT V.NOME, COUNT(T.NUMERO) FROM VENDEDOR V INNER JOIN TELEFONE T ON V.IDVENDEDOR = T.ID_VENDEDOR GROUP BY V.NOME HAVING COUNT(T.NUMERO)>=2 ORDER BY V.NOME DESC");
+        try{   
+            ResultSet rs = stmt.executeQuery();
+            if(!rs.next()){System.out.printf("A tabela está vazia!\n"); return;}
+            rs.beforeFirst();
+            while (rs.next()){
+                System.out.println(
+                    "Nome: "+rs.getString("V.NOME")+"\n"
+                    + "Quantidade de telefones: "+rs.getInt("COUNT(T.NUMERO)"));
+                System.out.println();
+            }
+        }
+        catch(SQLException err){
+            System.out.println(err.getMessage()+"\n");
+        }
+        stmt.close();            
+    }
+    
     public void show_tables(Connection con) throws SQLException{
         DatabaseMetaData meta = con.getMetaData();
         ResultSet rs1 = meta.getTables(null, null, null,new String[] {"TABLE"});

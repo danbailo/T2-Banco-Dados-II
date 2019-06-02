@@ -10,27 +10,26 @@ package T2_BDII;
  * @author daniel
  */
 public class Telefone {
-    private String idtelefone;
+    private long idtelefone;
     private String tipo;
     private String numero;
-    private String id_vendedor;    
+    private long id_vendedor;    
     
     public Telefone(){
         
     }
     
-    public Telefone(String idtelefone, String tipo, String numero, String id_vendedor){
-        this.idtelefone = idtelefone;
+    public Telefone(String tipo, String numero, long id_vendedor){
         this.tipo = tipo;
         this.numero = numero;
         this.id_vendedor = id_vendedor;
     }
 
-    public String getIdtelefone() {
+    public long getIdtelefone() {
         return idtelefone;
     }
 
-    public void setIdtelefone(String idtelefone) {
+    public void setIdtelefone(long idtelefone) {
         this.idtelefone = idtelefone;
     }
 
@@ -50,11 +49,11 @@ public class Telefone {
         this.numero = numero;
     }
 
-    public String getId_vendedor() {
+    public long getId_vendedor() {
         return id_vendedor;
     }
 
-    public void setId_vendedor(String id_vendedor) {
+    public void setId_vendedor(long id_vendedor) {
         this.id_vendedor = id_vendedor;
     }
 }

@@ -17,3 +17,4 @@ public class Main{
         new Menu(database, con, serverName, mydatabase, username, password);
     }
 }
+

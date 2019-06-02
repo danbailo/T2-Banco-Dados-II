@@ -2,12 +2,17 @@
 
 Após se conectar ao banco de dados, 3 tabelas serão criadas automaticamente. As tabelas são *VENDEDOR, TELEFONE* e *ENDERECO*.
 
-Para realizar a inserção de dados, primeiro você deve inserir os dados na tabela VENDEDOR, pois essa é a tabela
-mais forte do banco e as tabelas TELEFONE e ENDERECO dependem desta visto que elas possuem chave estrangeira da tabela VENDEDOR.
+Caso estas tabelas já existam, elas serão apagas e criadas novamente, com o intuito de limpar os dados já contidos nas mesmas.
 
-Ao selecionar a opção de **Inserir Dados Automaticamente**, serão inseridas *10 tuplas*.
+Ao executar a função principal, os dados já são inseridos nas tabelas. Na tabela *VENDEDOR*, são inseridas 10 tuplas. Na tabela *TELEFONE*, são inseridas 16 tuplas. Na tabela *ENDERECO*, são inseridas 10 tuplas.
 
-Ao selecionar a opção de **Realizar Consultas Automaticamente**, serão realizadas *5 consultas*.
+Após isso, você terá duas opções. **Realizar consultas** ou **Sair**. 
+
+Ao selecionar *Realizar consultas*, são realizadas 10 consultas, dentre essas são utilizadas os conceitos que foram aprendidos no decorrer da disciplina, como *subqueries, funções agregadas, group by, having, distinct, join, etc.*
+
+Ao selecionar *Sair*, a conexão com o banco de dados será fechada, e o programa terminará sua execução.
+
+**_OBS_**: Na classe *MySQL*, você poderá ver como foi realizada cada consulta, nas funções *query1, query2,...,query10*.
 
 ## Licença
 
